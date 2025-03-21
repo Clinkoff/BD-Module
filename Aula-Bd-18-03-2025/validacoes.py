@@ -56,10 +56,6 @@ def validar_cpf(cpf):
     return cpf[-2:] == f"{primeiro_digito}{segundo_digito}"
 
 
-
-
-
-
 def validar_data_nascimento(data):
     try:
         # Converte a string em data
@@ -80,4 +76,10 @@ def validar_data_nascimento(data):
         return False  # Retorna falso se a conversão falhar
 
 
+def validar_cep(cep):
+    # Remover caracteres não numéricos
+    cep = re.sub(r"\D", "", cep)
+
+    # Verificar se tem exatamente 8 dígitos
+    return len(cep) == 8 and cep.isdigit()
 

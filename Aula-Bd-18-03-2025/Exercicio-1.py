@@ -6,7 +6,7 @@ LivroAutor.
 
 '''
 
-import re
+
 import sqlite3
 from validacoes import validar_isbn
 

@@ -1,5 +1,5 @@
 '''
-Em seguida iremos modificá-la para que tenha duas tabelas. Uma de contatos e uma de telefones
+Pegue o primeiro arquivo agenda-telefonica e em seguida iremos modificá-la para que tenha duas tabelas. Uma de contatos e uma de telefones
 em um relacionamento 1:M
 '''
 
