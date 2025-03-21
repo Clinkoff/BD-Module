@@ -1,0 +1,52 @@
+-- database: ./arquivo.db
+CREATE TABLE IF NOT EXISTS Autores (
+    ID INTEGER PRIMARY KEY,
+    Nome TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Livros (
+    ID INTEGER PRIMARY KEY,
+    Titulo TEXT NOT NULL,
+    AutorID INTEGER,
+    FOREIGN KEY (AutorID) REFERENCES Autores(ID)
+);
+
+CREATE TABLE IF NOT EXISTS Emprestimos (
+    ID INTEGER PRIMARY KEY,
+    Leitor TEXT NOT NULL,
+    LivroID INTEGER,
+    DataEmprestimo TEXT NOT NULL,
+    FOREIGN KEY (LivroID) REFERENCES Livros(ID)
+);
+
+
+INSERT INTO Autores (ID, Nome) VALUES
+(1, 'Machado de Assis'),
+(2, 'Clarice Lispector'),
+(3, 'J.K. Rowling'),
+(4, 'George Orwell'),
+(5, 'Gabriel García Márquez');
+
+INSERT INTO Livros (ID, Titulo, AutorID) VALUES
+(1, 'Dom Casmurro', 1),
+(2, 'A Hora da Estrela', 2),
+(3, 'Harry Potter e a Pedra Filosofal', 3),
+(4, '1984', 4),
+(5, 'Cem Anos de Solidão', 5),
+(6, 'Quincas Borba', 1),
+(7, 'O Menino no Espelho', 2),
+(8, 'Harry Potter e o Prisioneiro de Azkaban', 3),
+(9, 'Revolução dos Bichos', 4),
+(10, 'O Amor nos Tempos do Cólera', 5);
+
+INSERT INTO Emprestimos (ID, Leitor, LivroID, DataEmprestimo) VALUES
+(1, 'João Silva', 1, '2023-01-15'),
+(2, 'Maria Souza', 3, '2023-02-10'),
+(3, 'Pedro Almeida', 5, '2023-03-01'),
+(4, 'Ana Costa', 2, '2023-04-20'),
+(5, 'Carlos Mendes', 4, '2023-05-12'),
+(6, 'João Silva', 8, '2023-06-05'),
+(7, 'Maria Souza', 6, '2023-07-18'),
+(8, 'Pedro Almeida', 9, '2023-08-22'),
+(9, 'Ana Costa', 7, '2023-09-14'),
+(10, 'Carlos Mendes', 10, '2023-10-30');

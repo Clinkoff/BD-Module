@@ -1,0 +1,41 @@
+-- database: ./arquivo.db
+
+
+-- exercicio 1
+SELECT  Livros.Titulo , Autores.Nome AS Autor
+FROM Livros 
+JOIN Autores ON Livros.AutorID = Autores.ID;
+
+
+
+-- exercicio 2
+SELECT l.titulo AS Livro, a.Nome AS Autor
+FROM Emprestimos AS e
+JOIN Livros as l ON e.LivroID = l.ID
+JOIN Autores AS a ON l.AutorID = A.ID;
+
+-- exercicio 3
+SELECT Emprestimos.Leitor, Livros.Titulo as Livro
+FROM Emprestimos
+JOIN Livros on Emprestimos.LivroID = Livros.ID;
+
+-- exercicio 4 - Exibir todos os livros escritos por "George Orwell".
+
+SELECT Autores.Nome, Livros.Titulo
+FROM livros
+JOIN Autores ON livros.AutorID = Autores.ID
+WHERE Autores.nome = 'George Orwell';
+
+
+-- exercicio 5 
+-- Criar um relatório que exiba:
+-- a. O nome do leitor.
+-- b. O título do livro.
+-- c. O nome do autor.
+-- d. A data do empréstimo
+
+SELECT Emprestimos.Leitor, Livros.Titulo, Autores.Nome, Emprestimos.DataEmprestimo
+FROM Emprestimos
+JOIN Livros ON Emprestimos.LivroID = Livros.ID
+JOIN Autores ON Livros.AutorID = Autores.ID;
+
