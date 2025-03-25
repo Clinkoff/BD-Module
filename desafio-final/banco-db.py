@@ -8,14 +8,11 @@ def conectar_banco():
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS Pratos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
+            Nome TEXT NOT NULL,
+            Serve INT NOT NULL,
+            Preco REAL NOT NULL,
+            Descricao TEXT NOT NULL
             
-            
-        )
-    ''');
-
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS Pedidos (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
             
         )
     ''');
@@ -31,6 +28,16 @@ def conectar_banco():
         )
     ''');
 
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Pedidos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            Clientes_id INTEGER, 
+            
+            
+            
+        )
+    ''');
 
     cursor.execute(''' 
         CREATE TABLE IF NOT EXISTS ClientePedido(
@@ -54,3 +61,14 @@ def conectar_banco():
 
     conexao.commit()
     return conexao, cursor;
+
+
+
+def cadastrar_pratos(conexao, cursor):
+
+
+    nome_prato  = input('Digite o nome do prato: ')
+
+
+
+
