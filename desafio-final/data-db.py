@@ -92,3 +92,17 @@ def relatorio_vendas():
     print('\nRelatório de vendas')
     for prato, total in vendas:
         print(f'{prato}: {total} vendas')
+
+
+
+
+
+
+
+
+
+
+
+class Carro:
+    cor = "Vermelho"
+    marca = "Toyota"
