@@ -19,6 +19,19 @@ CREATE TABLE IF NOT EXISTS Emprestimos (
     FOREIGN KEY (LivroID) REFERENCES Livros(ID)
 );
 
+CREATE TABLE IF NOT EXISTS pratos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT UNIQUE NOT NULL,
+    preco REAL NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS pedidos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    prato_id INTEGER,
+    status TEXT NOT NULL,
+    FOREIGN KEY (prato_id) REFERENCES pratos(id)
+);
+
 
 INSERT INTO Autores (ID, Nome) VALUES
 (1, 'Machado de Assis'),
@@ -50,3 +63,4 @@ INSERT INTO Emprestimos (ID, Leitor, LivroID, DataEmprestimo) VALUES
 (8, 'Pedro Almeida', 9, '2023-08-22'),
 (9, 'Ana Costa', 7, '2023-09-14'),
 (10, 'Carlos Mendes', 10, '2023-10-30');
+

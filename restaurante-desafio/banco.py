@@ -1,29 +1,28 @@
 import sqlite3
 
-def inicializar_bd():
-    conn = sqlite3.connect("restaurante.db")
-    cursor = conn.cursor()
-
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS usuarios (
+def criar_banco():
+    conexao = sqlite3.connect("restaurante.db")
+    cursor = conexao.cursor()
+    
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS pratos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            telegram_id TEXT UNIQUE,
-            email TEXT UNIQUE
+            nome TEXT UNIQUE NOT NULL,
+            preco REAL NOT NULL
         )
-    """)
-
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS cupons_enviados (
+    ''')
+    
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS pedidos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            usuario_id INTEGER,
-            email TEXT UNIQUE,
-            FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+            prato_id INTEGER,
+            status TEXT NOT NULL,
+            FOREIGN KEY (prato_id) REFERENCES pratos(id)
         )
-    """)
+    ''')
+    
+    conexao.commit()
+    conexao.close()
+    print("Banco de dados 'restaurante.db' criado com sucesso!")
 
-    conn.commit()
-    conn.close()
-
-if __name__ == "__main__":
-    inicializar_bd()
-    print("Banco de dados inicializado!")
+criar_banco()
